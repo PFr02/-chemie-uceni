@@ -29,7 +29,7 @@
 <header><h1>Chemie: názvosloví, vzorce a opakování</h1><p>Vlastní knihovna látek • náhodné testy • sledování chyb • adaptivní opakování</p></header>
 <main>
 <nav class="tabs" aria-label="Navigace aplikace"><button class="tab active" data-tab="home">Přehled</button><button class="tab" data-tab="add">Přidat látku</button><button class="tab" data-tab="questions">Otázky</button><button class="tab" data-tab="quiz">Test</button><button class="tab" data-tab="duel">Duel</button><button class="tab" data-tab="library">Knihovna</button><button class="tab" data-tab="stats">Statistiky</button><button class="tab" data-tab="account">Účet</button><button class="tab" data-tab="admin" id="adminTab">Správa</button><button class="tab" data-tab="data">Import a záloha</button></nav>
-<section id="home" class="panel active"><div class="grid"><div class="card span-7"><h2>Jak to funguje</h2><p>Každá látka má kód, triviální a systematický název a volitelný obrázek strukturního vzorce. Pro rozšířený test můžeš přidat libovolný počet látek do <b>syntézy / prekursorů</b> i <b>degradačních produktů</b>.</p><p>U každé přidané související látky lze vyplnit samostatně triviální název, systematický název a nahrát obrázek. V testu se pak objeví právě ty údaje, které u ní vyplníš.</p><div class="notice"><b>Doporučení:</b> nahrávej menší obrázky. Společná knihovna je ukládána online. Statistiky učení zůstávají u každého uživatele v jeho prohlížeči.</div></div><div class="card span-5"><h2>Rychlý start</h2><ol><li>V záložce <b>Přidat látku</b> založ kartu.</li><li>Pod rozšířeným testem přidej jednotlivé prekurzory nebo produkty tlačítkem.</li><li>V <b>Testu</b> nastav počet otázek, výchozí je 10.</li></ol><div id="homeSummary" class="muted">Načítám stav knihovny…</div></div></div></section>
+<section id="home" class="panel active"><div class="grid"><div class="card span-7"><h2>Jak to funguje</h2><p>Každá látka má kód, triviální a systematický název a volitelný obrázek strukturního vzorce. Pro rozšířený test můžeš přidat libovolný počet látek do <b>syntézy / prekursorů</b> i <b>degradačních produktů</b>.</p><p>U každé přidané související látky lze vyplnit samostatně triviální název, systematický název a nahrát obrázek. V testu se pak objeví právě ty údaje, které u ní vyplníš.</p><div class="notice"><b>Doporučení:</b> nahrávej menší obrázky. Společná knihovna je ukládána online. Po přihlášení se statistiky učení bezpečně ukládají k tvému účtu a přenesou se mezi zařízeními.</div></div><div class="card span-5"><h2>Rychlý start</h2><ol><li>V záložce <b>Přidat látku</b> založ kartu.</li><li>Pod rozšířeným testem přidej jednotlivé prekurzory nebo produkty tlačítkem.</li><li>V <b>Testu</b> nastav počet otázek, výchozí je 10.</li></ol><div id="homeSummary" class="muted">Načítám stav knihovny…</div></div></div></section>
 <section id="add" class="panel"><div class="card"><div class="row space"><div><h2>Přidat nebo upravit látku</h2><p class="muted">Kód a oba názvy jsou povinné. Po uložení se položka i případné obrázky zapíší do společné online knihovny pro všechny hráče.</p></div><button id="clearForm" class="btn secondary" type="button">Nový prázdný záznam</button></div>
 <div id="sharedUploadNotice" class="success small" style="margin:12px 0">Společná knihovna je aktivní. Obrázky se po uložení nahrají online do Supabase Storage.</div>
 <form id="compoundForm"><input type="hidden" id="editId"><div class="field-grid"><div><label for="code">Kód látky *</label><input id="code" required placeholder="Např. HD, GB, HN-1"></div><div><label for="trivial">Triviální název *</label><input id="trivial" required placeholder="Např. yperit"></div><div><label for="systematic">Systematický název *</label><input id="systematic" required placeholder="Např. bis(2-chlorethyl)sulfid"></div></div><div><label for="systematicAlternatives">Další uznávané odpovědi</label><textarea id="systematicAlternatives" placeholder="Např. jiný uznávaný zápis názvu. Každou variantu dej na nový řádek nebo odděl středníkem."></textarea><div class="hint">Použije se při vyhodnocení testu i duelu. Hlavní systematický název se počítá automaticky také.</div></div>
@@ -66,7 +66,7 @@
 </section>
 <section id="library" class="panel"><div class="card"><div class="row space"><div><h2>Knihovna látek</h2><p class="muted">Vyhledávej podle kódu nebo názvu. Každý záznam můžeš upravit, smazat nebo resetovat jeho studijní statistiky.</p></div><input id="librarySearch" placeholder="Hledat v knihovně" style="max-width:280px"></div><label class="filter-label">Filtrovat podle kategorií</label><div id="libraryCategoryFilter" class="category-picker"></div><div id="libraryList"></div></div></section>
 <section id="stats" class="panel"><div id="statsContent"></div></section>
-<section id="account" class="panel"><div class="grid"><div class="card span-6"><h2>Přihlášení</h2><p class="muted">Pro běžné hraní účet nepotřebuješ. Přihlášení je nutné jen pro úpravy společné knihovny.</p><div id="authSignedOut"><label for="authUsername">Uživatelské jméno</label><input id="authUsername" autocomplete="username" placeholder="Např. petrfrancouz"><p class="hint">Použij 3 až 24 znaků: písmena bez diakritiky, čísla, pomlčka, podtržítko nebo tečka.</p><label for="authName">Zobrazované jméno <span class="muted">(volitelné)</span></label><input id="authName" placeholder="Např. Petr"><label for="authPassword">Heslo</label><input id="authPassword" type="password" autocomplete="current-password" placeholder="Minimálně 8 znaků"><div class="row" style="margin-top:16px"><button id="authLogin" class="btn" type="button">Přihlásit se</button><button id="authRegister" class="btn secondary" type="button">Vytvořit účet</button></div><div id="authMsg" class="hint" style="margin-top:12px"></div></div><div id="authSignedIn" class="hidden"><div id="authProfileCard" class="notice"></div><div class="row" style="margin-top:14px"><button id="authRequestEditor" class="btn secondary" type="button">Požádat o možnost upravovat</button><button id="authLogout" class="btn danger" type="button">Odhlásit se</button></div><div id="authRequestMsg" class="hint" style="margin-top:12px"></div></div></div><div class="card span-6"><h2>Jak fungují práva</h2><p><b>Návštěvník:</b> může procházet knihovnu, testovat se a hrát duel.</p><p><b>Čtenář:</b> má účet, ale zatím nemůže měnit společná data.</p><p><b>Editor:</b> může přidávat, upravovat a mazat látky, otázky i obrázky.</p><p><b>Správce:</b> schvaluje nebo odebírá práva editorům.</p><div class="notice"><b>Bez e-mailu:</b> aplikace používá jen uživatelské jméno a heslo. Supabase si technicky vytváří interní přihlašovací adresu, která se nikde nezobrazuje ani se nepoužívá pro kontakt.</div></div></div></section>
+<section id="account" class="panel"><div class="grid"><div class="card span-6"><h2>Přihlášení</h2><p class="muted">Pro běžné hraní účet nepotřebuješ. Po přihlášení se ti navíc ukládají vlastní statistiky a postup učení. Přihlášení je nutné i pro úpravy společné knihovny.</p><div id="authSignedOut"><label for="authUsername">Uživatelské jméno</label><input id="authUsername" autocomplete="username" placeholder="Např. petrfrancouz"><p class="hint">Použij 3 až 24 znaků: písmena bez diakritiky, čísla, pomlčka, podtržítko nebo tečka.</p><label for="authName">Zobrazované jméno <span class="muted">(volitelné)</span></label><input id="authName" placeholder="Např. Petr"><label for="authPassword">Heslo</label><input id="authPassword" type="password" autocomplete="current-password" placeholder="Minimálně 8 znaků"><div class="row" style="margin-top:16px"><button id="authLogin" class="btn" type="button">Přihlásit se</button><button id="authRegister" class="btn secondary" type="button">Vytvořit účet</button></div><div id="authMsg" class="hint" style="margin-top:12px"></div></div><div id="authSignedIn" class="hidden"><div id="authProfileCard" class="notice"></div><div class="row" style="margin-top:14px"><button id="authRequestEditor" class="btn secondary" type="button">Požádat o možnost upravovat</button><button id="authLogout" class="btn danger" type="button">Odhlásit se</button></div><div id="authRequestMsg" class="hint" style="margin-top:12px"></div></div></div><div class="card span-6"><h2>Jak fungují práva</h2><p><b>Návštěvník:</b> může procházet knihovnu, testovat se a hrát duel.</p><p><b>Čtenář:</b> má účet, vlastní statistiky synchronizované mezi zařízeními, ale zatím nemůže měnit společná data.</p><p><b>Editor:</b> může přidávat, upravovat a mazat látky, otázky i obrázky.</p><p><b>Správce:</b> schvaluje nebo odebírá práva editorům.</p><div class="notice"><b>Bez e-mailu:</b> aplikace používá jen uživatelské jméno a heslo. Supabase si technicky vytváří interní přihlašovací adresu, která se nikde nezobrazuje ani se nepoužívá pro kontakt.</div></div></div></section>
 <section id="admin" class="panel"><div class="card"><div class="row space"><div><h2>Správa přístupů</h2><p class="muted">Schvaluj žádosti o možnost upravovat společnou knihovnu.</p></div><button id="refreshAdminUsers" class="btn secondary smallbtn" type="button">Obnovit seznam</button></div><div id="adminGuard" class="locked-note">Tato sekce je dostupná pouze správci.</div><div id="adminUsers"></div></div></section>
 <section id="data" class="panel"><div class="grid"><div class="card span-7"><h2>Import databáze</h2><p class="muted">Můžeš importovat JSON vytvořený touto aplikací. CSV import podporuje základní údaje, pro více prekurzorů a degradačních produktů použij raději JSON zálohu.</p><input id="importFile" type="file" accept=".json,.csv,application/json,text/csv"><div class="row" style="margin-top:14px"><button id="importBtn" class="btn">Importovat a sloučit</button><button id="downloadTemplate" class="btn secondary">Stáhnout CSV šablonu</button></div><div id="importMsg" class="hint"></div></div><div class="card span-5"><h2>Záloha a obnova</h2><p class="muted">Export obsahuje látky, rozšířené testové údaje i studijní statistiky.</p><div class="row"><button id="exportBtn" class="btn">Exportovat JSON</button><button id="clearAllBtn" class="btn danger">Smazat vše</button></div></div><div class="card span-12"><div class="row space"><div><h2>Nastavení online duelu</h2><p class="muted">Aplikace je připojená k výchozímu projektu Supabase pro online duel i společnou knihovnu. Látky a otázky přidané editorem uvidí všichni uživatelé stejného webu. Přístup se spravuje v záložce Účet a Správa. Přihlášení používá jen uživatelské jméno a heslo.</p></div><span id="onlineConfigStatus" class="tag warn">Nenastaveno</span></div><div class="field-grid"><div><label for="supabaseUrl">Supabase Project URL</label><input id="supabaseUrl" placeholder="https://xxxxxxxx.supabase.co"></div><div><label for="supabaseKey">Supabase publishable / anon key</label><input id="supabaseKey" type="password" placeholder="sb_publishable_... nebo anon key"></div></div><div class="row" style="margin-top:15px"><button id="saveSupabaseConfig" class="btn" type="button">Uložit připojení</button><button id="clearSupabaseConfig" class="btn secondary" type="button">Odebrat připojení</button><span id="supabaseConfigMsg" class="hint"></span></div><details style="margin-top:18px"><summary><b>Jednorázové vytvoření tabulek v Supabase</b></summary><p class="small muted">V Supabase otevři SQL Editor, vlož následující skript a spusť ho. Toto jednoduché nastavení slouží jen pro malou skupinu a není bezpečnostní bariéra: kdokoli s přístupem k nasazené aplikaci může technicky data číst či měnit. Neukládej sem citlivé údaje. Nevkládej sem nikdy service_role key.</p><textarea id="supabaseSql" class="config-code" readonly></textarea><div class="row" style="margin-top:10px"><button id="copySupabaseSql" class="btn secondary smallbtn" type="button">Kopírovat SQL skript</button></div></details></div></div></section>
 </main><footer>Knihovna látek a otázek je společná v Supabase. Studijní statistiky zůstávají soukromě v tomto prohlížeči.</footer>
@@ -420,6 +420,120 @@ const hdr=document.querySelector('header');if(hdr&&!$('#authStrip')){const strip
 const addCard=$('#add .card');if(addCard&&!$('#editorLockCompound')){const n=document.createElement('div');n.id='editorLockCompound';n.className='locked-note';n.textContent='Pro přidání nebo úpravu látky se přihlas a získej oprávnění editora.';addCard.prepend(n)}
 const questionCard=$('#questions .card');if(questionCard&&!$('#editorLockQuestions')){const n=document.createElement('div');n.id='editorLockQuestions';n.className='locked-note';n.textContent='Pro přidání nebo úpravu otázek se přihlas a získej oprávnění editora.';questionCard.prepend(n)}
 chemieInstallGuards();chemieBindAuth();setTimeout(chemieAuthInit,0);setTimeout(chemieRenderAuth,100);
+</script>
+
+
+<script>
+/* ===== Osobní statistiky uložené k přihlášenému účtu ===== */
+let chemieProgressLoadedForUser=null;
+let chemieProgressSyncTimer=null;
+let chemieProgressSyncRunning=false;
+
+function chemieProgressRow(compound){
+  const s=compound.stats||{};
+  return {
+    user_id: chemieSession.user.id,
+    compound_id:String(compound.id),
+    attempts:Number(s.attempts)||0,
+    correct_fields:Number(s.correctFields)||0,
+    total_fields:Number(s.totalFields)||0,
+    interval_days:Number(compound.interval)||1,
+    next_review:compound.nextReview||null,
+    updated_at:new Date().toISOString()
+  };
+}
+
+async function chemieSyncUserProgress(){
+  if(!onlineSB||!chemieSession?.user||chemieProgressSyncRunning) return;
+  const rows=(state.compounds||[]).map(chemieProgressRow);
+  if(!rows.length) return;
+  chemieProgressSyncRunning=true;
+  try{
+    const {error}=await onlineSB
+      .from('chemie_user_progress')
+      .upsert(rows,{onConflict:'user_id,compound_id'});
+    if(error) throw error;
+  }catch(e){
+    console.warn('Statistiky se zatím nepodařilo uložit:',e?.message||e);
+  }finally{
+    chemieProgressSyncRunning=false;
+  }
+}
+
+function chemieScheduleProgressSync(delay=500){
+  if(!chemieSession?.user) return;
+  clearTimeout(chemieProgressSyncTimer);
+  chemieProgressSyncTimer=setTimeout(chemieSyncUserProgress,delay);
+}
+
+async function chemieLoadUserProgress(){
+  if(!onlineSB||!chemieSession?.user) return;
+  const userId=chemieSession.user.id;
+  if(chemieProgressLoadedForUser===userId) return;
+  try{
+    const {data,error}=await onlineSB
+      .from('chemie_user_progress')
+      .select('compound_id,attempts,correct_fields,total_fields,interval_days,next_review')
+      .eq('user_id',userId);
+    if(error) throw error;
+    const remote=data||[];
+    if(remote.length){
+      const map=new Map(remote.map(row=>[String(row.compound_id),row]));
+      (state.compounds||[]).forEach(c=>{
+        const row=map.get(String(c.id));
+        if(row){
+          c.stats={
+            attempts:Number(row.attempts)||0,
+            correctFields:Number(row.correct_fields)||0,
+            totalFields:Number(row.total_fields)||0
+          };
+          c.interval=Number(row.interval_days)||1;
+          c.nextReview=row.next_review||null;
+        } else {
+          c.stats={attempts:0,correctFields:0,totalFields:0};
+          c.interval=1;
+          c.nextReview=null;
+        }
+      });
+    } else {
+      // První přihlášení: zachová případné lokální výsledky a uloží je k novému účtu.
+      await chemieSyncUserProgress();
+    }
+    chemieProgressLoadedForUser=userId;
+    sharedSaveLocal();
+    renderAll();
+  }catch(e){
+    console.warn('Statistiky se nepodařilo načíst:',e?.message||e);
+  }
+}
+
+// Každé uložení po dokončení testu nebo resetu statistik automaticky synchronizuje účet.
+const chemieSaveWithAccountProgress=save;
+save=function(){
+  chemieSaveWithAccountProgress();
+  chemieScheduleProgressSync();
+};
+
+// Jakmile je uživatel přihlášen, načti jeho vlastní postup. Při odhlášení zruš stav načtení.
+const chemieRenderAuthWithAccountProgress=chemieRenderAuth;
+chemieRenderAuth=function(){
+  chemieRenderAuthWithAccountProgress();
+  if(chemieSession?.user){
+    setTimeout(chemieLoadUserProgress,0);
+  } else {
+    chemieProgressLoadedForUser=null;
+  }
+};
+
+const chemieSharedLibraryInitWithAccountProgress=sharedLibraryInit;
+sharedLibraryInit=async function(){
+  const out=await chemieSharedLibraryInitWithAccountProgress.apply(this,arguments);
+  await chemieLoadUserProgress();
+  return out;
+};
+
+// Pokryje i první načtení stránky, kdy přihlášení a knihovna nabíhají současně.
+setTimeout(chemieLoadUserProgress,1600);
 </script>
 
 </body></html>
