@@ -23,10 +23,55 @@
 .role-admin{background:#f5e5ff;color:#6f1d8b}.role-editor{background:#def7ea;color:#09683f}.role-viewer{background:#eef2f8;color:#45566e}
 .locked-note{padding:12px 14px;border:1px dashed var(--line);border-radius:10px;background:#fafcff;color:var(--muted);margin-bottom:12px}.hidden{display:none!important}
 .user-table-actions{display:flex;gap:6px;flex-wrap:wrap}
+
+/* Modernizovaný vizuál */
+:root{
+  --bg:#eef3fb;
+  --card:rgba(255,255,255,.94);
+  --ink:#10213b;
+  --muted:#5e6f87;
+  --line:#d7e1ee;
+  --primary:#255bc8;
+  --primary-dark:#163a83;
+  --soft:#eaf2ff;
+  --shadow:0 12px 32px rgba(22,47,91,.10);
+}
+body{background:radial-gradient(circle at 10% -10%,#dceaff 0,transparent 31%),radial-gradient(circle at 95% 8%,#e4efff 0,transparent 25%),var(--bg);min-height:100vh}
+.app-header{position:relative;overflow:hidden;background:linear-gradient(118deg,#0e2659 0%,#174aa2 53%,#2e78dc 100%);padding:0;color:#fff;box-shadow:0 14px 34px rgba(19,47,104,.22)}
+.app-header:before,.app-header:after{content:"";position:absolute;border-radius:999px;pointer-events:none;opacity:.22}.app-header:before{width:360px;height:360px;right:-110px;top:-210px;border:2px solid #cfe3ff;box-shadow:0 0 0 28px rgba(207,227,255,.12),0 0 0 72px rgba(207,227,255,.07)}.app-header:after{width:220px;height:220px;left:41%;bottom:-178px;border:2px solid #dcecff;box-shadow:0 0 0 34px rgba(220,236,255,.08)}
+.header-inner{position:relative;z-index:1;max-width:1320px;margin:0 auto;padding:25px 20px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.brand-lockup{display:flex;align-items:center;gap:14px}.brand-lockup h1{margin:0;color:#fff;font-size:clamp(1.65rem,3.1vw,2.45rem);font-weight:900;letter-spacing:-.04em}.brand-lockup p{margin:3px 0 0;color:rgba(255,255,255,.78);font-weight:600;font-size:.96rem}
+.brand-mark{position:relative;width:50px;height:50px;border-radius:16px;background:linear-gradient(145deg,#75b9ff,#e3f1ff);box-shadow:inset 0 1px 0 rgba(255,255,255,.75),0 9px 20px rgba(3,20,57,.28);overflow:hidden}.brand-mark:before{content:"";position:absolute;left:12px;top:9px;width:24px;height:18px;border:3px solid #153d8a;border-bottom:0;border-radius:5px 5px 2px 2px}.brand-mark:after{content:"";position:absolute;left:9px;bottom:8px;width:31px;height:19px;background:#153d8a;clip-path:polygon(14% 0,86% 0,100% 100%,0 100%);border-radius:3px}.brand-mark span{position:absolute;z-index:1;left:17px;bottom:15px;width:17px;height:6px;border-radius:999px;background:#79d4ff}.brand-mark i,.brand-mark b{position:absolute;z-index:1;width:4px;height:4px;border-radius:50%;background:#d8f5ff}.brand-mark i{left:21px;bottom:20px}.brand-mark b{left:29px;bottom:18px}
+.header-badges{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:8px}.header-badges span{padding:8px 10px;border:1px solid rgba(255,255,255,.2);border-radius:999px;background:rgba(255,255,255,.12);backdrop-filter:blur(8px);font-size:.8rem;font-weight:800;color:#fff;white-space:nowrap}
+main{max-width:1320px;margin:22px auto 58px;padding:0 20px}.tabs{position:sticky;top:10px;z-index:10;padding:9px;border:1px solid rgba(205,218,237,.92);border-radius:16px;background:rgba(250,252,255,.86);backdrop-filter:blur(14px);box-shadow:0 12px 28px rgba(31,54,91,.08);margin-bottom:24px}.tab{border:1px solid transparent;background:transparent;color:#465875;padding:10px 14px;border-radius:10px;transition:.18s ease;font-size:.91rem}.tab:hover{background:#e9f1ff;color:#173d86}.tab.active{background:linear-gradient(135deg,#1e55c2,#3474dc);border-color:#1e55c2;box-shadow:0 6px 14px rgba(31,83,191,.23)}
+.card{border:1px solid rgba(213,225,239,.96);border-radius:18px;box-shadow:var(--shadow);background:var(--card);transition:transform .16s ease,box-shadow .16s ease}.card:hover{box-shadow:0 16px 38px rgba(22,47,91,.12)}
+h2{font-size:1.32rem;letter-spacing:-.025em}h3{letter-spacing:-.015em}.btn{border-radius:11px;box-shadow:0 5px 12px rgba(37,91,200,.18);transition:transform .15s ease,box-shadow .15s ease,filter .15s ease}.btn:hover:not(:disabled){transform:translateY(-1px);box-shadow:0 8px 18px rgba(37,91,200,.25);filter:saturate(1.08)}.btn.secondary{background:#eaf1ff;color:#24467e;box-shadow:none}.btn.danger{box-shadow:0 5px 12px rgba(195,52,78,.18)}.btn.good{box-shadow:0 5px 12px rgba(22,129,93,.18)}
+input,textarea,select{border-color:#cbd9ec;background:#fbfdff;transition:border-color .15s ease,box-shadow .15s ease,background .15s ease}input:focus,textarea:focus,select:focus{outline:0;border-color:#4d85e7;background:#fff;box-shadow:0 0 0 4px rgba(71,125,226,.14)}
+.kpi{background:linear-gradient(145deg,#f7faff,#eef4ff);border-color:#d9e5fa}.question,.related-card,.duel-player,.online-answer-card{background:linear-gradient(145deg,#ffffff,#f7faff);border-color:#d6e2f3}.tag{background:#eaf1fb;color:#365176}.notice{background:linear-gradient(135deg,#fff7da,#fffdf4);border-color:#f0d88d}.success{background:linear-gradient(135deg,#e7f8f0,#f4fffa)}.error{background:linear-gradient(135deg,#fff0f3,#fff9fa)}
+.auth-strip{border-radius:15px;background:linear-gradient(135deg,#fff,#f6f9ff);box-shadow:0 7px 18px rgba(23,47,91,.06)}
+footer{padding-bottom:42px;color:#728198}
+@media(max-width:860px){.header-inner{align-items:flex-start;flex-direction:column}.header-badges{justify-content:flex-start}.tabs{top:6px}}
+@media(max-width:560px){.brand-mark{width:44px;height:44px;border-radius:14px}.header-inner{padding:20px 16px}.header-badges span{font-size:.74rem;padding:7px 9px}main{padding:0 14px}.tabs{border-radius:14px;padding:7px;gap:4px}.tab{padding:9px 10px;font-size:.82rem}.card{border-radius:15px}}
+
 </style>
 </head>
 <body>
-<header><h1>Chemie: názvosloví, vzorce a opakování</h1><p>Vlastní knihovna látek • náhodné testy • sledování chyb • adaptivní opakování</p></header>
+<header class="app-header">
+  <div class="header-inner">
+    <div class="brand-lockup">
+      <div class="brand-mark" aria-hidden="true"><span></span><i></i><b></b></div>
+      <div>
+        <h1>BCHL Duel</h1>
+        <p>Společná knihovna, testy a online souboje</p>
+      </div>
+    </div>
+    <div class="header-badges" aria-label="Hlavní funkce">
+      <span>⚗︎ Knihovna</span>
+      <span>◈ Opakování</span>
+      <span>⚔ Online duel</span>
+    </div>
+  </div>
+</header>
 <main>
 <nav class="tabs" aria-label="Navigace aplikace"><button class="tab active" data-tab="home">Přehled</button><button class="tab" data-tab="add">Přidat látku</button><button class="tab" data-tab="questions">Otázky</button><button class="tab" data-tab="quiz">Test</button><button class="tab" data-tab="duel">Duel</button><button class="tab" data-tab="library">Knihovna</button><button class="tab" data-tab="stats">Statistiky</button><button class="tab" data-tab="account">Účet</button><button class="tab" data-tab="admin" id="adminTab">Správa</button><button class="tab" data-tab="data">Import a záloha</button></nav>
 <section id="home" class="panel active"><div class="grid"><div class="card span-7"><h2>Jak to funguje</h2><p>Každá látka má kód, triviální a systematický název a volitelný obrázek strukturního vzorce. Pro rozšířený test můžeš přidat libovolný počet látek do <b>syntézy / prekursorů</b> i <b>degradačních produktů</b>.</p><p>U každé přidané související látky lze vyplnit samostatně triviální název, systematický název a nahrát obrázek. V testu se pak objeví právě ty údaje, které u ní vyplníš.</p><div class="notice"><b>Doporučení:</b> nahrávej menší obrázky. Společná knihovna je ukládána online. Po přihlášení se statistiky učení bezpečně ukládají k tvému účtu a přenesou se mezi zařízeními.</div></div><div class="card span-5"><h2>Rychlý start</h2><ol><li>V záložce <b>Přidat látku</b> založ kartu.</li><li>Pod rozšířeným testem přidej jednotlivé prekurzory nebo produkty tlačítkem.</li><li>V <b>Testu</b> nastav počet otázek, výchozí je 10.</li></ol><div id="homeSummary" class="muted">Načítám stav knihovny…</div></div></div></section>
